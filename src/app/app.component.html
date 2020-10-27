@@ -5,7 +5,5 @@
     <a (click)="select(todo)">{{ todo.title }}</a>
   </li>
 </ul>
-<article>
-  <div>{{ selectedTodo.title }}</div>
-  <div>{{ selectedTodo.deadline }}</div>
-</article>
+
+<app-todo-detail [todo]="selectedTodo"></app-todo-detail>
