@@ -1,6 +1,8 @@
 <h1>{{ title }}</h1>
 <p>Le nom de l'application doit s'afficher ci-dessus</p>
 
+<app-todo-create-form></app-todo-create-form>
+
 <app-todo-nav (selected)="selectedTodo=$event"></app-todo-nav>
 
 <app-todo-detail [todo]="selectedTodo"></app-todo-detail>
