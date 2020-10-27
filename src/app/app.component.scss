@@ -1,6 +1,29 @@
+@import "../variables";
+
 h1 {
   padding: .5em;
   text-align: center;
-  background: #123;
-  color: #fed;
+  background: $dark-color;
+  color: $light-color;
+}
+
+nav {
+  background: lighten($dark-color, 90%);
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    margin: 0 1em;
+  }
+
+  a {
+    padding: .5em;
+    display: block;
+    color: #333;
+    background: #ddd;
+    text-decoration: none;
+    @include hover-zoom
+  }
 }

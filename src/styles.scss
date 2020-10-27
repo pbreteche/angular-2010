@@ -1,5 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import "variables";
+
 html {
-  background: #ffeedd;
-  color: #112233;
+  background: $light-color;
+  color: $dark-color;
 }
