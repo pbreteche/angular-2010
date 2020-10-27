@@ -1,8 +1,10 @@
 <h1>{{ title }}</h1>
-<p>Le nom de l'application doit s'afficher ci-dessus</p>
 
-<app-todo-create-form></app-todo-create-form>
+<nav>
+  <ul>
+    <li><a routerLink="/">Accueil</a></li>
+    <li><a routerLink="/new">Nouveau</a></li>
+  </ul>
+</nav>
 
-<app-todo-nav (selected)="selectedTodo=$event"></app-todo-nav>
-
-<app-todo-detail [todo]="selectedTodo"></app-todo-detail>
+<router-outlet></router-outlet>
