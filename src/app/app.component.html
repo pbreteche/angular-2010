@@ -1,5 +1,11 @@
 <h1>{{ title }}</h1>
 <p>Le nom de l'application doit s'afficher ci-dessus</p>
 <ul>
-  <li *ngFor="let todo of data">{{ todo.title }}</li>
+  <li *ngFor="let todo of data">
+    <a (click)="select(todo)">{{ todo.title }}</a>
+  </li>
 </ul>
+<article>
+  <div>{{ selectedTodo.title }}</div>
+  <div>{{ selectedTodo.deadline }}</div>
+</article>
