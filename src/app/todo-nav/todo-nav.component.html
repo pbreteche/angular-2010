@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let todo of data">
-    <a (click)="select(todo)">{{ todo.title }}</a>
+  <li *ngFor="let todo of data; index as i">
+    <a [routerLink]="['/detail', i]">{{ todo.title }}</a>
   </li>
 </ul>

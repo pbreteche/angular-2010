@@ -8,9 +8,4 @@ import {Todo, todolist} from '../../mock/app.data';
 })
 export class TodoNavComponent {
   data = todolist;
-  @Output() selected = new EventEmitter<Todo>();
-
-  select(todo: Todo) {
-    this.selected.emit(todo);
-  }
 }
