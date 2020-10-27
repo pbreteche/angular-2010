@@ -8,10 +8,6 @@ import {Todo, todolist} from '../mock/app.data';
 })
 export class AppComponent {
   title = 'todolist';
-  data = todolist;
   selectedTodo = todolist[0];
 
-  select(todo: Todo) {
-    this.selectedTodo = todo;
-  }
 }

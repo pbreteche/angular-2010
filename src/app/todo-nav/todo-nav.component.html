@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let todo of data">
+    <a (click)="select(todo)">{{ todo.title }}</a>
+  </li>
+</ul>
