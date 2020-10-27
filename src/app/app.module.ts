@@ -7,13 +7,15 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { TodoNavComponent } from './todo-nav/todo-nav.component';
 import { TodoCreateFormComponent } from './todo-create-form/todo-create-form.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoDetailComponent,
     TodoNavComponent,
-    TodoCreateFormComponent
+    TodoCreateFormComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
