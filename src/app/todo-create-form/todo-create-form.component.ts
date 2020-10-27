@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Todo, todolist} from '../../mock/app.data';
+import {Todo} from '../todo';
+import {TodolistService} from '../todolist.service';
 
 @Component({
   selector: 'app-todo-create-form',
@@ -7,10 +8,14 @@ import {Todo, todolist} from '../../mock/app.data';
   styleUrls: ['./todo-create-form.component.scss']
 })
 export class TodoCreateFormComponent {
-  newTodo: Todo = { title: '', deadline: ''};
+
+  constructor(private todoList: TodolistService) {
+  }
+
+  newTodo: Todo = { title: '', deadline: new Date()};
 
   create() {
-    todolist.push(this.newTodo);
-    this.newTodo = { title: '', deadline: ''};
+    this.todoList.data.push(this.newTodo);
+    this.newTodo = { title: '', deadline: new Date()};
   }
 }

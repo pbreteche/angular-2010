@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Todo, todolist} from '../mock/app.data';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,4 @@ import {Todo, todolist} from '../mock/app.data';
 })
 export class AppComponent {
   title = 'todolist';
-  selectedTodo = todolist[0];
-
 }

@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Todo, todolist} from '../../mock/app.data';
 import {Title} from '@angular/platform-browser';
+import {Todo} from '../todo';
+import {TodolistService} from '../todolist.service';
 
 @Component({
   selector: 'app-todo-detail',
@@ -9,15 +10,17 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./todo-detail.component.scss']
 })
 export class TodoDetailComponent implements OnInit {
-  @Input()
-  todo: Todo = todolist[0];
+  todo: Todo;
 
-  constructor(private route: ActivatedRoute, private title: Title) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private title: Title,
+    private todoList: TodolistService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(map => {
-      this.todo = todolist[map.get('id')];
+      this.todo = this.todoList.data[map.get('id')];
       this.title.setTitle(this.todo.title);
     });
   }
