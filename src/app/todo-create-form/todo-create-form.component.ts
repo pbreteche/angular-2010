@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Todo} from '../../mock/app.data';
+import {Todo, todolist} from '../../mock/app.data';
 
 @Component({
   selector: 'app-todo-create-form',
@@ -8,4 +8,9 @@ import {Todo} from '../../mock/app.data';
 })
 export class TodoCreateFormComponent {
   newTodo: Todo = { title: '', deadline: ''};
+
+  create() {
+    todolist.push(this.newTodo);
+    this.newTodo = { title: '', deadline: ''};
+  }
 }
