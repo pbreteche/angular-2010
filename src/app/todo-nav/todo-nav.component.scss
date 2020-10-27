@@ -16,5 +16,5 @@ a {
   background: lighten($dark-color, 70%);
   color: darken($light-color, 70%);
   text-decoration: none;
-  @include hover-zoom
+  @include hover-zoom;
 }

@@ -1,6 +1,7 @@
 @import "../variables";
 
 h1 {
+  margin: 0;
   padding: .5em;
   text-align: center;
   background: $dark-color;
@@ -10,6 +11,7 @@ h1 {
 nav {
   background: lighten($dark-color, 90%);
   ul {
+    margin: 0;
     display: flex;
     list-style-type: none;
     padding: 0;
@@ -24,6 +26,11 @@ nav {
     color: #333;
     background: #ddd;
     text-decoration: none;
-    @include hover-zoom
+    @include hover-zoom;
+
+    &.active {
+      background: $dark-color;
+      color: $light-color;
+    }
   }
 }
