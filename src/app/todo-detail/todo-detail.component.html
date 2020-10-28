@@ -2,4 +2,5 @@
   <div>{{ todo.title }}</div>
   <div [ngClass]="getClasses()">{{ todo.deadline | date:"full" }}</div>
   <div>{{ todo.deadline | frenchDate : false }}</div>
+  <div>{{ todo.description }}</div>
 </article>

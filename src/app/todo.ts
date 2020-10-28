@@ -1,7 +1,17 @@
+export enum Severity {
+  Light,
+  High,
+  VeryHigh,
+  Critical,
+}
+
 export class Todo {
   constructor(
     public title: string,
-    public deadline: Date
+    public deadline: Date,
+    public description: string = '',
+    public severity: Severity = Severity.Light,
+    public isOpen: boolean = true,
   ) {}
 
   static loadMultipleFromJson(json: string): Todo[] {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Title} from '@angular/platform-browser';
-import {Todo} from '../todo';
+import {Severity, Todo} from '../todo';
 import {TodolistService} from '../todolist.service';
 
 @Component({
@@ -26,8 +26,12 @@ export class TodoDetailComponent implements OnInit {
   }
 
   getClasses(): object {
-    return {
+    const classes = {
       'deadline-past': this.todo.deadline.getTime() < Date.now(),
     };
+
+    classes[Severity[this.todo.severity]] = true;
+
+    return classes;
   }
 }
