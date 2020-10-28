@@ -1,15 +1,38 @@
-<form (ngSubmit)="create()">
+<form (ngSubmit)="create()" #form="ngForm">
   <div>
     <label for="todo-create-form-title" [attr.aria-label]="'titre'">Titre</label>
     <input type="text" id="todo-create-form-title" [(ngModel)]="newTodo.title"
-      name="title"
+      name="title" required
     >
   </div>
   <div>
     <label for="todo-create-form-deadline">Échéance</label>
     <input type="date" id="todo-create-form-deadline" [(ngModel)]="newTodo.deadline"
-      name="deadline"
+           name="deadline" required
     >
   </div>
-  <button>Ajouter</button>
+  <div>
+    <label for="todo-create-form-description">Description</label>
+    <textarea id="todo-create-form-description" [(ngModel)]="newTodo.description"
+           name="description"
+    ></textarea>
+  </div>
+  <div>
+    <label for="todo-create-form-severity">Sévérité</label>
+    <select id="todo-create-form-severity" [(ngModel)]="newTodo.severity"
+              name="severity"
+    >
+      <option *ngFor="let v of severityValues">{{ v }}</option>
+    </select>
+  </div>
+  <div>
+    <input type="checkbox" id="todo-create-form-isopen" [(ngModel)]="newTodo.isOpen"
+           name="isopen"
+    >
+    <label for="todo-create-form-isopen">Ouvert</label>
+  </div>
+
+  <button [disabled]="form.invalid">Ajouter</button>
 </form>
+
+{{ newTodo | json }}

@@ -1,8 +1,8 @@
 export enum Severity {
-  Light,
-  High,
-  VeryHigh,
-  Critical,
+  Light = 'LIGHT',
+  High = 'HIGH',
+  VeryHigh = 'VERY_HIGH',
+  Critical = 'CRITICAL',
 }
 
 export class Todo {

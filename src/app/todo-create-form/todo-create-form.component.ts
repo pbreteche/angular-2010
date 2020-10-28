@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {Todo} from '../todo';
+import {Component} from '@angular/core';
+import {Severity, Todo} from '../todo';
 import {TodolistService} from '../todolist.service';
 
 @Component({
@@ -8,6 +8,12 @@ import {TodolistService} from '../todolist.service';
   styleUrls: ['./todo-create-form.component.scss']
 })
 export class TodoCreateFormComponent {
+  severityValues: Severity[] = [
+    Severity.Light,
+    Severity.High,
+    Severity.VeryHigh,
+    Severity.Critical,
+  ];
 
   constructor(private todoList: TodolistService) {
   }
