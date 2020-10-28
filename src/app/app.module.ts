@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FrenchDatePipe } from './french-date.pipe';
 import { DeadlineSortPipe } from './deadline-sort.pipe';
+import { ParityDirective } from './parity.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DeadlineSortPipe } from './deadline-sort.pipe';
     TodoCreateFormComponent,
     NotFoundComponent,
     FrenchDatePipe,
-    DeadlineSortPipe
+    DeadlineSortPipe,
+    ParityDirective
   ],
   imports: [
     BrowserModule,

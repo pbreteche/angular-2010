@@ -1,12 +1,12 @@
 <form (ngSubmit)="create()">
   <div>
-    <label for="todo-create-form-title"></label>
+    <label for="todo-create-form-title" [attr.aria-label]="'titre'">Titre</label>
     <input type="text" id="todo-create-form-title" [(ngModel)]="newTodo.title"
       name="title"
     >
   </div>
   <div>
-    <label for="todo-create-form-deadline"></label>
+    <label for="todo-create-form-deadline">Échéance</label>
     <input type="date" id="todo-create-form-deadline" [(ngModel)]="newTodo.deadline"
       name="deadline"
     >

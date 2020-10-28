@@ -17,4 +17,8 @@ a {
   color: darken($light-color, 70%);
   text-decoration: none;
   @include hover-zoom;
+
+  &.odd {
+    background: lighten($dark-color, 55%);
+  }
 }
