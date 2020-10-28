@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import '@angular/common/locales/global/fr';
 
 import { AppComponent } from './app.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
@@ -26,7 +27,9 @@ import { DeadlineSortPipe } from './deadline-sort.pipe';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
