@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let todo of data; index as i">
+  <li *ngFor="let todo of data | deadlineSort : 'ASC'; index as i">
     <a [routerLink]="['/detail', i]">{{ todo.title }}</a>
   </li>
 </ul>
