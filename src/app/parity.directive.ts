@@ -9,7 +9,6 @@ export class ParityDirective implements OnChanges{
   constructor(private el: ElementRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (this.parityNumber % 2) {
       this.el.nativeElement.classList.add('odd');
     }

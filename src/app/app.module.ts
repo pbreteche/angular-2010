@@ -12,6 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FrenchDatePipe } from './french-date.pipe';
 import { DeadlineSortPipe } from './deadline-sort.pipe';
 import { ParityDirective } from './parity.directive';
+import { RandomDirective } from './random.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ParityDirective } from './parity.directive';
     NotFoundComponent,
     FrenchDatePipe,
     DeadlineSortPipe,
-    ParityDirective
+    ParityDirective,
+    RandomDirective
   ],
   imports: [
     BrowserModule,
