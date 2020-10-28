@@ -1,5 +1,5 @@
 <article>
   <div>{{ todo.title }}</div>
-  <div [ngClass]="{'deadline-past': isPast()}">{{ todo.deadline | date:"full" }}</div>
+  <div [ngClass]="getClasses()">{{ todo.deadline | date:"full" }}</div>
   <div>{{ todo.deadline | frenchDate : false }}</div>
 </article>

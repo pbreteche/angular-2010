@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {Todo} from '../todo';
@@ -18,14 +18,16 @@ export class TodoDetailComponent implements OnInit {
     private todoList: TodolistService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.paramMap.subscribe(map => {
       this.todo = this.todoList.data[map.get('id')];
       this.title.setTitle(this.todo.title);
     });
   }
 
-  isPast(): boolean {
-    return this.todo.deadline.getTime() < Date.now();
+  getClasses(): object {
+    return {
+      'deadline-past': this.todo.deadline.getTime() < Date.now(),
+    };
   }
 }
