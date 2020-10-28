@@ -8,6 +8,7 @@ import { TodoNavComponent } from './todo-nav/todo-nav.component';
 import { TodoCreateFormComponent } from './todo-create-form/todo-create-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FrenchDatePipe } from './french-date.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     TodoDetailComponent,
     TodoNavComponent,
     TodoCreateFormComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FrenchDatePipe
   ],
   imports: [
     BrowserModule,

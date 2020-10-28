@@ -1,4 +1,5 @@
 <article>
   <div>{{ todo.title }}</div>
   <div>{{ todo.deadline | date:"dd/MM/yyyy" }}</div>
+  <div>{{ todo.deadline | frenchDate : false }}</div>
 </article>
