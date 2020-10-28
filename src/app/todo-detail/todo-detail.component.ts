@@ -24,4 +24,8 @@ export class TodoDetailComponent implements OnInit {
       this.title.setTitle(this.todo.title);
     });
   }
+
+  isPast(): boolean {
+    return this.todo.deadline.getTime() < Date.now();
+  }
 }
