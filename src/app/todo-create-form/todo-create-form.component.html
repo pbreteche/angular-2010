@@ -1,8 +1,11 @@
 <form (ngSubmit)="create()" #form="ngForm">
   <div>
+    <p [hidden]="titleModel.untouched || titleModel.valid">
+      Merci de renseigner un titre
+    </p>
     <label for="todo-create-form-title" [attr.aria-label]="'titre'">Titre</label>
     <input type="text" id="todo-create-form-title" [(ngModel)]="newTodo.title"
-      name="title" required
+      name="title" required #titleModel="ngModel"
     >
   </div>
   <div>
