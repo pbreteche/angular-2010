@@ -12,10 +12,10 @@ export class TodoCreateFormComponent {
   constructor(private todoList: TodolistService) {
   }
 
-  newTodo: Todo = { title: '', deadline: null};
+  newTodo: Todo = new Todo('', null);
 
-  create() {
+  create(): void {
     this.todoList.data.push(this.newTodo);
-    this.newTodo = { title: '', deadline: null};
+    this.newTodo = new Todo('', null);
   }
 }
