@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Todo} from './todo';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,11 @@ export class TodolistService {
 
   get data(): Observable<Todo[]> {
     return this.subject.asObservable();
+  }
+
+  fetch(id: number): Observable<Todo|null> {
+    return this.subject.pipe(
+      map(todos => todos[id])
+    );
   }
 }

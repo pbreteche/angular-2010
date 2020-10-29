@@ -16,7 +16,7 @@ export class TodoCreateFormComponent {
   newTodo: Todo = new Todo('', null);
 
   create(): void {
-    this.todoList.data.push(this.newTodo);
+    // this.todoList.data.push(this.newTodo);
     this.newTodo = new Todo('', null);
   }
 }

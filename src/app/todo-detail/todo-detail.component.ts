@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {Severity, Todo} from '../todo';
 import {TodolistService} from '../todolist.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-todo-detail',
@@ -10,7 +11,7 @@ import {TodolistService} from '../todolist.service';
   styleUrls: ['./todo-detail.component.scss']
 })
 export class TodoDetailComponent implements OnInit {
-  todo: Todo;
+  todo$: Observable<Todo>;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,11 +21,11 @@ export class TodoDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(map => {
-      this.todo = this.todoList.data[map.get('id')];
-      this.title.setTitle(this.todo.title);
+      this.todo$ = this.todoList.fetch(+map.get('id'));
+      this.title.setTitle('to replace');
     });
   }
-
+/*
   getClasses(): object {
     const classes = {
       'deadline-past': this.todo.deadline.getTime() < Date.now(),
@@ -34,4 +35,5 @@ export class TodoDetailComponent implements OnInit {
 
     return classes;
   }
+ */
 }
