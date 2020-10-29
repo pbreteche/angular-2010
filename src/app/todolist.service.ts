@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {data} from '../mock/app.data';
+import {Injectable} from '@angular/core';
 import {Todo} from './todo';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,15 @@ import {Todo} from './todo';
 export class TodolistService {
   data: Todo[];
 
-  constructor() {
-    this.data = Todo.loadMultipleFromJson(data);
+  constructor(private http: HttpClient) {
+    this.load();
+  }
+
+  load(): void {
+    this.http.get('assets/todos.json').subscribe(
+      (todos: {title: string, deadline: string}[]) => {
+        this.data = Todo.loadMultipleLiteral(todos);
+      }
+    );
   }
 }

@@ -15,6 +15,7 @@ import { ParityDirective } from './parity.directive';
 import { RandomDirective } from './random.directive';
 import { ReactFormComponent } from './react-form/react-form.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CustomValidatorDirective } from './custom-validator.directive';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr' },

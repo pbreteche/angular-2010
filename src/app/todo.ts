@@ -32,4 +32,16 @@ export class Todo {
 
     return returnedData;
   }
+
+  static loadMultipleLiteral(todos: { title: string; deadline: string }[]): Todo[] {
+
+    const returnedData: Todo[] = [];
+
+    todos.forEach(todoData => returnedData.push(new Todo(
+      todoData.title,
+      new Date(todoData.deadline)
+    )));
+
+    return returnedData;
+  }
 }
