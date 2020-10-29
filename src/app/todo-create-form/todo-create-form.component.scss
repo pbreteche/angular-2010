@@ -1,6 +1,5 @@
+@import "../../variables";
+
 form {
-  .ng-touched.ng-invalid {
-    color: darkred;
-    background: lightpink;
-  }
+  @include invalid-form-field
 }

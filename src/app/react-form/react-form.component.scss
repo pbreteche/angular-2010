@@ -1,0 +1,5 @@
+@import "../../variables";
+
+form {
+  @include invalid-form-field
+}

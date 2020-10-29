@@ -10,3 +10,10 @@ $light-color: #fed;
     box-shadow: 0 0 1em rgba(0, 0, 0, 1);
   }
 }
+
+@mixin invalid-form-field {
+  .ng-touched.ng-invalid {
+    color: darkred;
+    background: lightpink;
+  }
+}

@@ -3,7 +3,7 @@ import {Severity, SEVERITY_VALUES, Todo} from '../todo';
 import {ActivatedRoute} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {TodolistService} from '../todolist.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-react-form',
@@ -16,8 +16,12 @@ export class ReactFormComponent implements OnInit {
   severityValues: Severity[] = SEVERITY_VALUES;
 
   editForm = new FormGroup({
-    title: new FormControl(''),
-    deadline: new FormControl(''),
+    title: new FormControl('', [
+      Validators.required
+    ]),
+    deadline: new FormControl('', [
+      Validators.required
+    ]),
     description: new FormControl(''),
     meta: new FormGroup({
       isOpen: new FormControl(true),
@@ -37,6 +41,8 @@ export class ReactFormComponent implements OnInit {
       this.title.setTitle(this.todo.title);
 
       this.editForm.patchValue(this.todo);
+      this.editForm.get('deadline')
+        .setValue(this.todo.deadline.toISOString().substring(0, 10));
     });
   }
 
