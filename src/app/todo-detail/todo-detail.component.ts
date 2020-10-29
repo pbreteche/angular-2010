@@ -4,6 +4,7 @@ import {Title} from '@angular/platform-browser';
 import {Severity, Todo} from '../todo';
 import {TodolistService} from '../todolist.service';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-todo-detail',
@@ -25,15 +26,22 @@ export class TodoDetailComponent implements OnInit {
       this.title.setTitle('to replace');
     });
   }
-/*
-  getClasses(): object {
-    const classes = {
-      'deadline-past': this.todo.deadline.getTime() < Date.now(),
-    };
 
-    classes[Severity[this.todo.severity]] = true;
+  getClasses(): Observable<object> {
+    return this.todo$.pipe(
+      map(todo => {
+        if (!todo) {
+          return {};
+        }
 
-    return classes;
+        const classes = {
+          'deadline-past': todo.deadline.getTime() < Date.now(),
+        };
+
+        classes[Severity[todo.severity]] = true;
+
+        return classes;
+      })
+    );
   }
- */
 }
