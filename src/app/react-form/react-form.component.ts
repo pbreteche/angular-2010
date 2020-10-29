@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {TodolistService} from '../todolist.service';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {CustomValidator} from '../custom.validator';
 
 @Component({
   selector: 'app-react-form',
@@ -18,7 +19,8 @@ export class ReactFormComponent implements OnInit {
 
   editForm = new FormGroup({
     title: new FormControl('', [
-      Validators.required
+      Validators.required,
+      CustomValidator(),
     ]),
     deadline: new FormControl('', [
       Validators.required

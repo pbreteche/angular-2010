@@ -1,4 +1,4 @@
-<form (ngSubmit)="create(); form.reset() " #form="ngForm">
+<form (ngSubmit)="create(); form.reset()" #form="ngForm">
   <div>
     <p [hidden]="titleModel.untouched || titleModel.valid">
       Merci de renseigner un titre
