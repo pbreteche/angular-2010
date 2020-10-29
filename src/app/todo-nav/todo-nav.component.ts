@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {Todo} from '../todo';
+import {Component} from '@angular/core';
 import {TodolistService} from '../todolist.service';
 
 @Component({
@@ -7,13 +6,6 @@ import {TodolistService} from '../todolist.service';
   templateUrl: './todo-nav.component.html',
   styleUrls: ['./todo-nav.component.scss']
 })
-export class TodoNavComponent implements OnInit {
-  public data: Todo[] = [];
-
-  constructor(private todoList: TodolistService) {
-  }
-
-  ngOnInit() {
-    this.data = this.todoList.data;
-  }
+export class TodoNavComponent {
+  constructor(public todoList: TodolistService) {}
 }
