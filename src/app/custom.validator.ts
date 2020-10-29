@@ -2,7 +2,7 @@ import {AbstractControl, ValidatorFn} from '@angular/forms';
 
 export function CustomValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} | null => {
-    if (3 > control.value.length) {
+    if (!control.value || 3 > control.value.length) {
       return { custom: {value: control.value}};
     }
 
