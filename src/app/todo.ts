@@ -5,6 +5,13 @@ export enum Severity {
   Critical = 'CRITICAL',
 }
 
+export const SEVERITY_VALUES = [
+  Severity.Light,
+  Severity.High,
+  Severity.VeryHigh,
+  Severity.Critical,
+];
+
 export class Todo {
   constructor(
     public title: string,

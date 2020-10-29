@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import '@angular/common/locales/global/fr';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { FrenchDatePipe } from './french-date.pipe';
 import { DeadlineSortPipe } from './deadline-sort.pipe';
 import { ParityDirective } from './parity.directive';
 import { RandomDirective } from './random.directive';
+import { ReactFormComponent } from './react-form/react-form.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +25,13 @@ import { RandomDirective } from './random.directive';
     FrenchDatePipe,
     DeadlineSortPipe,
     ParityDirective,
-    RandomDirective
+    RandomDirective,
+    ReactFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [

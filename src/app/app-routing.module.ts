@@ -4,12 +4,14 @@ import {TodoNavComponent} from './todo-nav/todo-nav.component';
 import {TodoCreateFormComponent} from './todo-create-form/todo-create-form.component';
 import {TodoDetailComponent} from './todo-detail/todo-detail.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {ReactFormComponent} from './react-form/react-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: TodoNavComponent },
   { path: 'new', component: TodoCreateFormComponent },
   { path: 'detail/:id', component: TodoDetailComponent },
+  { path: 'edit/:id', component: ReactFormComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

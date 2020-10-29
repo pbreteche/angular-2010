@@ -1,6 +1,7 @@
 <ul>
   <li *ngFor="let todo of data | deadlineSort : 'ASC'; index as i">
     <a [routerLink]="['/detail', i]" [appParity]="i">{{ todo.title }}</a>
+    <a [routerLink]="['/edit', i]"> éditer </a>
   </li>
 </ul>
 

@@ -1,0 +1,37 @@
+<form [formGroup]="editForm">
+  <div>
+    <p>
+      Merci de renseigner un titre
+    </p>
+    <label for="react-form-title" [attr.aria-label]="'titre'">Titre</label>
+    <input type="text" id="react-form-title" formControlName="title" required
+    >
+  </div>
+  <div>
+    <label for="react-form-deadline">Échéance</label>
+    <input type="text" id="react-form-deadline" formControlName="deadline" required
+    >
+  </div>
+  <div>
+    <label for="react-form-description">Description</label>
+    <textarea id="react-form-description" formControlName="description"
+    ></textarea>
+  </div>
+
+  <div formGroupName="meta">
+    <div>
+      <label for="react-form-severity">Sévérité</label>
+      <select id="react-form-severity"
+              formControlName="severity"
+      >
+        <option *ngFor="let v of severityValues">{{ v }}</option>
+      </select>
+    </div>
+    <div>
+      <input type="checkbox" id="react-form-isopen" formControlName="isOpen"
+      >
+      <label for="react-form-isopen">Ouvert</label>
+    </div>
+  </div>
+  <button>Modifier</button>
+</form>
