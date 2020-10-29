@@ -1,4 +1,4 @@
-<form [formGroup]="editForm">
+<form [formGroup]="editForm" (ngSubmit)="update()">
   <div>
     <p [hidden]="title.valid || title.untouched">>
       Merci de renseigner un titre
@@ -33,5 +33,5 @@
       <label for="react-form-isopen">Ouvert</label>
     </div>
   </div>
-  <button>Modifier</button>
+  <button [disabled]="editForm.invalid || editForm.pristine">Modifier</button>
 </form>

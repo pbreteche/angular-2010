@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Severity, SEVERITY_VALUES, Todo} from '../todo';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {TodolistService} from '../todolist.service';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -12,6 +12,7 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 })
 export class ReactFormComponent implements OnInit {
   todo: Todo;
+  id = 0;
 
   severityValues: Severity[] = SEVERITY_VALUES;
 
@@ -31,13 +32,15 @@ export class ReactFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private pageTitle: Title,
     private todoList: TodolistService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(map => {
-      this.todo = this.todoList.data[map.get('id')];
+      this.id = +map.get('id');
+      this.todo = this.todoList.data[this.id];
       this.pageTitle.setTitle(this.todo.title);
 
       this.editForm.patchValue(this.todo);
@@ -47,4 +50,14 @@ export class ReactFormComponent implements OnInit {
   }
 
   get title(): AbstractControl { return this.editForm.get('title'); }
+
+  update(): void {
+    this.todo.title = this.editForm.get('title').value;
+    this.todo.deadline = new Date(this.editForm.get('deadline').value);
+    this.todo.description = this.editForm.get('description').value;
+    this.todo.isOpen = this.editForm.get('meta').get('isOpen').value;
+    this.todo.severity = this.editForm.get('meta').get('severity').value;
+
+    this.router.navigate(['detail', this.id]);
+  }
 }
