@@ -1,6 +1,6 @@
 <form [formGroup]="editForm">
   <div>
-    <p>
+    <p [hidden]="title.valid || title.untouched">>
       Merci de renseigner un titre
     </p>
     <label for="react-form-title" [attr.aria-label]="'titre'">Titre</label>

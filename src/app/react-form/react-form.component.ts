@@ -3,7 +3,7 @@ import {Severity, SEVERITY_VALUES, Todo} from '../todo';
 import {ActivatedRoute} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {TodolistService} from '../todolist.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-react-form',
@@ -31,14 +31,14 @@ export class ReactFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private title: Title,
+    private pageTitle: Title,
     private todoList: TodolistService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(map => {
       this.todo = this.todoList.data[map.get('id')];
-      this.title.setTitle(this.todo.title);
+      this.pageTitle.setTitle(this.todo.title);
 
       this.editForm.patchValue(this.todo);
       this.editForm.get('deadline')
@@ -46,4 +46,5 @@ export class ReactFormComponent implements OnInit {
     });
   }
 
+  get title(): AbstractControl { return this.editForm.get('title'); }
 }
