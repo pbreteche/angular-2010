@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, NG_VALIDATORS, ReactiveFormsModule} from '@angular/forms';
 import '@angular/common/locales/global/fr';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { DeadlineSortPipe } from './deadline-sort.pipe';
 import { ParityDirective } from './parity.directive';
 import { RandomDirective } from './random.directive';
 import { ReactFormComponent } from './react-form/react-form.component';
+import { CustomValidatorDirective } from './custom-validator.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ReactFormComponent } from './react-form/react-form.component';
     DeadlineSortPipe,
     ParityDirective,
     RandomDirective,
-    ReactFormComponent
+    ReactFormComponent,
+    CustomValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { ReactFormComponent } from './react-form/react-form.component';
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr' },
+    { provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true }
   ],
   bootstrap: [AppComponent]
 })

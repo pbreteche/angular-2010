@@ -5,7 +5,7 @@
     </p>
     <label for="todo-create-form-title" [attr.aria-label]="'titre'">Titre</label>
     <input type="text" id="todo-create-form-title" [(ngModel)]="newTodo.title"
-      name="title" required #titleModel="ngModel"
+      name="title" required #titleModel="ngModel" appCustomValidator
     >
   </div>
   <div>
