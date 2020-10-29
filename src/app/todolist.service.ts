@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {data} from '../mock/app.data';
 import {Todo} from './todo';
+import {APP_CONFIG_TOKEN} from './app.module';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import {Todo} from './todo';
 export class TodolistService {
   data: Todo[];
 
-  constructor() {
+  constructor(@Inject(APP_CONFIG_TOKEN) private config) {
     this.data = Todo.loadMultipleFromJson(data);
   }
 }

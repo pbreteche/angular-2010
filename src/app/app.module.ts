@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import {InjectionToken, LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule, NG_VALIDATORS, ReactiveFormsModule} from '@angular/forms';
 import '@angular/common/locales/global/fr';
 
@@ -15,6 +15,14 @@ import { ParityDirective } from './parity.directive';
 import { RandomDirective } from './random.directive';
 import { ReactFormComponent } from './react-form/react-form.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
+import {TodolistService} from './todolist.service';
+
+const APP_CONFIG = {
+  pagination: true,
+  todoPerPage: 10,
+};
+
+export const APP_CONFIG_TOKEN = new InjectionToken('APP_CONFIG');
 
 @NgModule({
   declarations: [
@@ -38,7 +46,14 @@ import { CustomValidatorDirective } from './custom-validator.directive';
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr' },
-    { provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true }
+    { provide: NG_VALIDATORS, useExisting: CustomValidatorDirective, multi: true },
+    TodolistService,
+    { provide: TodolistService, useClass: TodolistService },
+    { provide: APP_CONFIG_TOKEN, useValue: APP_CONFIG},
+    { provide: TodolistService, useFactory: (param: string) => {
+      // pré-traitement pour instancier le service
+      return new TodolistService(APP_CONFIG);
+    }, deps: ['un paramètre']},
   ],
   bootstrap: [AppComponent]
 })
