@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class TodolistService {
-  data: Todo[];
+  data: Todo[] = [];
 
   constructor(private http: HttpClient) {
     this.load();
@@ -15,7 +15,7 @@ export class TodolistService {
   load(): void {
     this.http.get('assets/todos.json').subscribe(
       (todos: {title: string, deadline: string}[]) => {
-        this.data = Todo.loadMultipleLiteral(todos);
+        this.data.push(...Todo.loadMultipleLiteral(todos));
       }
     );
   }
