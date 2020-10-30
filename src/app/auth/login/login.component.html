@@ -1,0 +1,12 @@
+<form *ngIf="!auth.isLoggedIn; else logoutLink"
+      (ngSubmit)="login(); form.reset()" #form="ngForm"
+>
+  <div>
+    <label for="login-username">Nom d'utilisateur</label>
+    <input name="username" id="login-username" [(ngModel)]="username">
+  </div>
+  <button>Se connecter</button>
+</form>
+<ng-template #logoutLink>
+  <a (click)="logout()">Déconnexion({{ auth.user.username }})</a>
+</ng-template>

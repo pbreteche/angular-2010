@@ -16,6 +16,7 @@ import { RandomDirective } from './random.directive';
 import { ReactFormComponent } from './react-form/react-form.component';
 import { CustomValidatorDirective } from './custom-validator.directive';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {HttpClientModule} from '@angular/common/http';
     ParityDirective,
     RandomDirective,
     ReactFormComponent,
-    CustomValidatorDirective
+    CustomValidatorDirective,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
