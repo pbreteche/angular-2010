@@ -16,7 +16,8 @@ export class TodoCreateFormComponent {
   newTodo: Todo = new Todo('', null);
 
   create(): void {
-    // this.todoList.data.push(this.newTodo);
+    this.newTodo.deadline = new Date(this.newTodo.deadline);
+    this.todoList.add(this.newTodo);
     this.newTodo = new Todo('', null);
   }
 }

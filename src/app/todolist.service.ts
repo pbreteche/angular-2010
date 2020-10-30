@@ -37,4 +37,10 @@ export class TodolistService {
     todos[id] = todo;
     this.subject.next(todos);
   }
+
+  add(newTodo: Todo): void {
+    const todos = this.subject.getValue();
+    todos.push(newTodo);
+    this.subject.next(todos);
+  }
 }
