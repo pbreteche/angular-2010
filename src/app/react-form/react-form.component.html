@@ -17,21 +17,19 @@
     <textarea id="react-form-description" formControlName="description"
     ></textarea>
   </div>
-
-  <div formGroupName="meta">
-    <div>
-      <label for="react-form-severity">Sévérité</label>
-      <select id="react-form-severity"
-              formControlName="severity"
-      >
-        <option *ngFor="let v of severityValues">{{ v }}</option>
-      </select>
-    </div>
-    <div>
-      <input type="checkbox" id="react-form-isopen" formControlName="isOpen"
-      >
-      <label for="react-form-isopen">Ouvert</label>
-    </div>
+  <div>
+    <label for="react-form-severity">Sévérité</label>
+    <select id="react-form-severity"
+            formControlName="severity" #selectField
+    >
+      <option [ngValue]="null" disabled selected>Sélectionner la sévérité</option>
+      <option *ngFor="let v of severityValues" [ngValue]="v">{{ v }}</option>
+    </select>
+  </div>
+  <div>
+    <input type="checkbox" id="react-form-isopen" formControlName="isOpen"
+    >
+    <label for="react-form-isopen">Ouvert</label>
   </div>
   <button [disabled]="editForm.invalid || editForm.pristine">Modifier</button>
 </form>

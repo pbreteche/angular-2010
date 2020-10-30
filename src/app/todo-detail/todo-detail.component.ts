@@ -21,8 +21,8 @@ export class TodoDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(map => {
-      this.todo$ = this.todoList.fetch(+map.get('id'));
+    this.route.paramMap.subscribe(paramMap => {
+      this.todo$ = this.todoList.fetch(+paramMap.get('id'));
       this.title.setTitle('to replace');
     });
   }

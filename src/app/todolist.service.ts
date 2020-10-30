@@ -31,4 +31,10 @@ export class TodolistService {
       map(todos => todos[id])
     );
   }
+
+  update(id: number, todo: Todo): void {
+    const todos = this.subject.getValue();
+    todos[id] = todo;
+    this.subject.next(todos);
+  }
 }

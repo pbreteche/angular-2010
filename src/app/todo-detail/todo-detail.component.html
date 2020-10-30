@@ -3,5 +3,6 @@
   <div [ngClass]="getClasses() | async">{{ (todo$ | async).deadline | date:"full" }}</div>
   <div>{{ (todo$ | async).deadline | frenchDate : false }}</div>
   <div>{{ (todo$ | async).description }}</div>
+  <div>{{ (todo$ | async).severity }}</div>
 </article>
 <ng-template #loading>Loading...</ng-template>

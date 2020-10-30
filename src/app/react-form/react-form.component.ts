@@ -5,6 +5,7 @@ import {Title} from '@angular/platform-browser';
 import {TodolistService} from '../todolist.service';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomValidator} from '../custom.validator';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-react-form',
@@ -12,7 +13,7 @@ import {CustomValidator} from '../custom.validator';
   styleUrls: ['./react-form.component.scss']
 })
 export class ReactFormComponent implements OnInit {
-  todo: Todo;
+  todo$: Observable<Todo>;
   id = 0;
 
   severityValues: Severity[] = SEVERITY_VALUES;
@@ -26,10 +27,8 @@ export class ReactFormComponent implements OnInit {
       Validators.required
     ]),
     description: new FormControl(''),
-    meta: new FormGroup({
-      isOpen: new FormControl(true),
-      severity: new FormControl(Severity.Light),
-    })
+    isOpen: new FormControl(true),
+    severity: new FormControl(''),
   });
 
   constructor(
@@ -42,23 +41,31 @@ export class ReactFormComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(map => {
       this.id = +map.get('id');
-      this.todo = this.todoList.data[this.id];
-      this.pageTitle.setTitle(this.todo.title);
+      this.todo$ = this.todoList.fetch(+map.get('id'));
+      // this.pageTitle.setTitle(this.todo.title);
 
-      this.editForm.patchValue(this.todo);
-      this.editForm.get('deadline')
-        .setValue(this.todo.deadline.toISOString().substring(0, 10));
+      this.todo$.subscribe(todo => {
+        if (!todo) {
+          return;
+        }
+        this.editForm.patchValue(todo);
+        this.editForm.get('deadline')
+          .setValue(todo.deadline.toISOString().substring(0, 10));
+      });
     });
   }
 
   get title(): AbstractControl { return this.editForm.get('title'); }
 
   update(): void {
-    this.todo.title = this.editForm.get('title').value;
-    this.todo.deadline = new Date(this.editForm.get('deadline').value);
-    this.todo.description = this.editForm.get('description').value;
-    this.todo.isOpen = this.editForm.get('meta').get('isOpen').value;
-    this.todo.severity = this.editForm.get('meta').get('severity').value;
+    const todo = new Todo(
+      this.editForm.get('title').value,
+      new Date(this.editForm.get('deadline').value),
+      this.editForm.get('description').value,
+      this.editForm.get('severity').value,
+      this.editForm.get('isOpen').value
+    );
+    this.todoList.update(this.id, todo);
 
     this.router.navigate(['detail', this.id]);
   }
