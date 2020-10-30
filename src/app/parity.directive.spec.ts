@@ -22,6 +22,6 @@ describe('ParityDirective', () => {
   });
 
   it('should add "odd" class to first paragraph', () => {
-    expect(p[0].nativeElement.classList.has('odd')).toBeTruthy();
+    expect(p[0].nativeElement.classList.contains('odd')).toBeTruthy();
   });
 });
